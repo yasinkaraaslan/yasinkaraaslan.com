@@ -22,6 +22,20 @@
   font-weight: 700;
 }
 
+.post-meta__update {
+  position: relative;
+  color: var(--fg2);
+  font-style: italic;
+  font-size: 12px;
+  margin-left: 3px;
+  bottom: 3px;
+}
+
+.post-meta__date {
+  margin-left: 5px;
+  font-size: 0.93rem;
+}
+
 .post-content {
   margin: 1.3rem 0;
 }

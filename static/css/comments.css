@@ -1,0 +1,238 @@
+.comment {
+  display: block;
+  padding: 12px 0 8px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.comment__info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  font-size: 14px;
+  position: relative;
+}
+
+.comment__author {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.comment__date {
+  color: var(--fg3);
+  padding-left: 2px;
+}
+
+.comment__body {
+  padding-left: 17px;
+}
+.comment__text {
+  margin-bottom: 4px;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.comments__form {
+  position: relative;
+  display: block;
+  margin-bottom: 50px;
+  width: clamp(100px, 100%, 400px);
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 2px;
+  border-color: var(--bg3);
+  &:has(textarea:focus) {
+    border-color: var(--fg2);
+  }
+  box-shadow:
+    0 10px 15px rgba(0, 0, 0, 0.1),
+    0 -1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.comment__reply-form {
+  &:has(textarea:focus) {
+    border-color: var(--primary);
+  }
+  margin: 8px 0 0 17px;
+}
+
+.comments__form-actions {
+  display: flex;
+  align-items: center;
+  padding-top: 1px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 30px;
+  gap: 12px;
+  background-color: var(--bg2);
+}
+
+.comments__form-button {
+  user-select: none;
+  border: 0;
+  margin: 0 5px 0 5px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--bg1);
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: var(--fg4);
+
+  &:hover:enabled {
+    background-color: var(--bg4);
+  }
+  &:focus {
+    box-shadow: 0 0 0 2px var(--fg2);
+    outline: none;
+  }
+
+  &:disabled {
+    /* display: none; */
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.comments__form-submit {
+}
+
+.comments__form-field-wrapper {
+  position: relative;
+  & .comments__form-field {
+    /* font-size * line-height * lines * vertical-padding */
+    --height: calc(15px * 1.4 * 4 + 10px * 3);
+    background-color: var(--bg1);
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--height);
+    min-height: var(--height);
+    padding: 10px 12px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.4;
+    border: 0;
+    resize: none;
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    backface-visibility: hidden; /* let's try to fix blinking in Safari */
+    transform: translateZ(0); /* let's try to fix blinking in Safari, again */
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.avatar {
+  border: 0;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+}
+
+.comment__actions > button {
+  color: var(--primary-alt);
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  &:hover {
+    color: var(--primary);
+  }
+  border-radius: 3px;
+}
+.comment__reply {
+  padding: 2px;
+  &:focus {
+    box-shadow: 0 0 0 2px var(--primary);
+    outline: none;
+  }
+}
+
+.thread {
+  position: relative;
+}
+
+.thread_indented {
+  margin-left: 17px;
+}
+
+.thread_root {
+}
+
+.thread__collapse {
+  user-select: none;
+  border-color: var(--fg);
+  height: calc(100% - 50px);
+  width: 11px;
+  position: absolute;
+  top: 50px;
+  left: -4px;
+
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0;
+    border-left: 1px solid var(--fg3);
+    height: 100%;
+  }
+  /* cursor: pointer;
+    &:hover::after {
+      transform: translateX(-1px);
+      border-left: 3px solid var(--fg2);
+      z-index: 10;
+    } */
+}
+
+.thread__collapse_collapsed {
+  width: 18px;
+  height: 18px;
+  top: 12px;
+  left: 0;
+  display: flex;
+  text-align: center;
+  opacity: 0.8;
+  border-radius: 2px;
+  border: 1px solid;
+
+  &::after {
+    display: none;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:hover::after {
+    transform: translateX(0);
+  }
+}
+
+.thread__collapse_collapsed > div {
+  position: relative;
+  top: 6px;
+  left: 3px;
+  width: 12px;
+  height: 2px;
+  border-bottom: 2px solid;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    border-bottom: 2px solid;
+    position: absolute;
+    top: -4px;
+    left: 0;
+  }
+
+  &::after {
+    top: 4px !important;
+  }
+}

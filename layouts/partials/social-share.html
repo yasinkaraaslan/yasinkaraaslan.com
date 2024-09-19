@@ -2,7 +2,7 @@
 {{ $title := .Title }}
 {{ with $.Site.Params.socialShare }}
   <div class="social-share">
-    <strong class="social-share__heading">Share this post: </strong>
+    <strong class="social-share__heading">{{ T "share" }}: </strong>
     {{ range . }}
       {{ $href := .formatString }}
       {{ $href := replace $href "{url}" (urlquery $url) }}

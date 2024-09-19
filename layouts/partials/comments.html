@@ -1,9 +1,66 @@
-<!--
-  Comments at the end of posts, e.g.:
+{{ $apiUrl := printf "https://api.yasinkaraaslan.com/%s/posts/%s/comments" .Language.Lang (.RelPermalink | path.Base) }}
 
-  {{ template "_internal/disqus.html" . }}
+{{/* Is this the best way to do it? */}}
+{{ $commentsJs := resources.Get "js/comments.js" | resources.ExecuteAsTemplate (printf "js/comments.%s.%s.js" .Language.Lang (.RelPermalink | path.Base)) (dict "page" .  "url" $apiUrl) }}
+
+{{ if hugo.IsProduction }}
+  {{ $commentsJs = $commentsJs | minify | fingerprint "sha512" }}
+{{ end }}
 
 
-  ... or another comment engine.
-  See also: https://gohugo.io/content-management/comments
--->
+<div id="comments">
+  <h4 id="comments-heading">{{ T "comments" }}</h4>
+  <form class="comments__form">
+    <div class="comments__form-field-wrapper">
+      <textarea
+        name="body"
+        type="text"
+        class="comments__form-field"
+        minlength="4"
+        placeholder="{{ T "commentPlaceholder" }}"
+        spellcheck="true"
+        autocomplete="off"
+        required
+      ></textarea>
+    </div>
+    <div class="comments__form-actions">
+      {{ partial "auth.html" . }}
+      <div class="user hide">
+        <div class="user__info">
+          <div class="user__info-image">
+            <img class="avatar" src="" alt="User avatar" />
+          </div>
+          <div class="user__info-name"></div>
+        </div>
+        <div class="user__logout">
+          <button
+            type="button"
+            class="user__logout-button"
+            title="{{ T "signOut" }}"
+          >
+            {{ with resources.Get "img/icons/logout.svg" }}
+              {{ .Content | safeHTML }}
+            {{ end }}
+          </button>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="comments__form-button comments__form-submit"
+        title="{{ T "submit" }}"
+      >
+        {{ T "submit" }}
+      </button>
+    </div>
+  </form>
+  <div id="comments-list" class="comments__list" role="list"></div>
+  <script
+    src="{{ $commentsJs.RelPermalink }}"
+    {{ if hugo.IsProduction }}
+      integrity="{{ $commentsJs.Data.Integrity }}"
+    {{ end }}
+    type="module"
+    defer
+  ></script>
+</div>

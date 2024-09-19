@@ -29,6 +29,9 @@
   {{ end }}
 />
 
+{{/* We have to include it this way. Otherwise, SASS removes some important classes since comments are loaded later */}}
+<link rel="stylesheet" href="/css/comments.css" />
+
 <!-- TODO Use prefetch when more widely supported -->
 <link
   id="prism-dark"

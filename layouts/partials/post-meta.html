@@ -1,19 +1,34 @@
 <div class="post-meta">
-  {{- with .page.Date -}}
-    <span>{{ .Format "2006-01-02" }}</span>
-  {{- end -}}
-  {{- with .page.Params.Author -}}
-    <span> by </span><span class="post-meta__author">{{ . }}</span>
-  {{- end -}}
-  <!-- Don't show modified date when changed within the first 72 hours  -->
-  {{- $hours := (.page.Lastmod.Sub .page.Date).Hours -}}
-  {{- if and .page.Date .page.Lastmod (ge $hours 72) -}}
-    <span> (updated: {{ .page.Lastmod.Format "2006-01-02" }})</span>
-  {{- end -}}
+  {{ with .page.Date }}
+  <span>
+    <div alt="Date"class="inline-icon">
+      {{ with resources.Get "img/icons/calendar.svg" }}
+          {{ .Content | safeHTML }}
+        {{ end }}
+    </div><span class="post-meta__date">{{ . | time.Format ":date_long" }}</span></span>
+  {{ end }}
+  {{/*  {{- with .page.Params.Author -}}
+    <span> by </span> <span class="post-meta__author">{{ . }}</span>
+  {{- end -}}  */}}
+  {{ if .page.Params.readingTime }}
+    <span style="margin-left: 14px;">
+      <div alt="Reading time" class="inline-icon">
+        
+        {{ with resources.Get "img/icons/timer.svg" }}
+          {{ .Content | safeHTML }}
+        {{ end }}
+      </div><span class="post-meta__date">{{ .page.ReadingTime }}
+      {{ T "minute" }}{{ if (gt .page.ReadingTime 1) }}{{ T "plural" }}{{ end }}</span>
+      </span>
+  {{ end }}
   {{ with .page.Params.tags }}
     <div class="post-tags">
       {{ range . -}}
-        <a class="post-tag" href="{{ urlize (printf "tags/%s" . ) | absURL }}">
+
+        <a
+          class="post-tag"
+          href="{{ urlize ((printf "/tags/%s" .) ) | relLangURL  }}"
+        >
           {{- /* Replace hyphen with non-breaking hyphen */ -}}
           {{- replace (urlize .) "-" "&#8209;" | safeHTML -}}
         </a>

@@ -15,6 +15,7 @@ function getTheme() {
 function setTheme(theme) {
   // Main theme
   document.documentElement.setAttribute("data-theme", theme);
+  document.getElementById("color-scheme").setAttribute("content", theme);
 
   // Prism theme
   const prismDark = document.getElementById("prism-dark");

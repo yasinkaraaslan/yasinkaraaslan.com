@@ -1,0 +1,36 @@
+{{ with $.Site.Params.signIn }}
+  <div class="auth">
+    <button
+      type="button"
+      class="comments__form-button auth__dropdown-button"
+      title = "{{ T "signIn" }}"
+    >
+      {{ T "signIn" }}
+    </button>
+    <div tabindex="-1" class="auth__dropdown">
+      {{/*  <div class="auth__title">{{ T "signInWith" "" }}</div>  */}}
+      <ul class="auth__list">
+        {{ with .providers }}
+          {{ range . }}
+            {{ $authUrl := printf "/auth/%s/login" . }}
+            {{ $title := T "signInWith" (strings.FirstUpper .) }}
+            <li class="auth__item">
+              <button
+                type="button"
+                class="auth__button"
+                data-provider="{{ . }}"
+                title="{{ $title }}"
+              >
+                {{ with resources.Get (printf "img/icons/%s.svg" .) }}
+                  {{ .Content | safeHTML }}
+                {{ end }}
+              </button>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+      <hr class="auth__divider"/>
+      <div class="auth__info">{{ (T "signInInfo") | safeHTML }}</div>
+    </div>
+  </div>
+{{ end }}

@@ -1,8 +1,14 @@
 <footer>
-  <div class="copyright">
+  <div class="footer_info">
     {{ with $.Site.Copyright }}
       {{ . | safeHTML }}
     {{ end }}
+  </div>
+
+  <div class="footer_info">
+    <a href="/privacy" target="_blank">
+      {{ T "privacyPolicy" }}
+    </a>
   </div>
 </footer>
 
@@ -13,8 +19,7 @@
 
 {{ $prism := resources.Get "js/prism.js" | resources.ExecuteAsTemplate "js/prism.js" . }}
 {{ $bundle := slice $prism | resources.Concat "js/main.js" | js.Build $jsBuildOptions }}
-{{ $flexsearch := resources.Get "js/flexsearch.js" | resources.ExecuteAsTemplate "js/flexsearch.js" . | js.Build $jsBuildOptions }}
-
+{{ $flexsearch := resources.Get "js/flexsearch.js" | resources.ExecuteAsTemplate (printf "js/flexsearch.%s.js" $.Language.Lang) . | js.Build $jsBuildOptions }}
 {{ if hugo.IsProduction }}
   {{ $bundle = $bundle | fingerprint "sha512" }}
   {{ $flexsearch = $flexsearch | fingerprint "sha512" }}

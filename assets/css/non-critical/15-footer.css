@@ -9,3 +9,11 @@ footer {
   padding-top: 2rem;
   text-align: center;
 }
+
+.footer_info:hover {
+  text-decoration: underline;
+  color: var(--fg4);
+}
+.footer_info + .footer_info {
+  margin-left: 20px;
+}

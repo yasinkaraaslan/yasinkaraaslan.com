@@ -6,21 +6,22 @@
   {{ $backgroundColor = "bg0_h" }}
 {{ end }}
 
+/* TODO: redo the colors */
 :root[data-theme="light"] {
   --bg: var(--{{ $backgroundColor }});
-  --bg0: #fbf1c7;
-  --bg0_h: #f9f5d7;
-  --bg0_s: #f2e5bc;
-  --bg1: #ebdbb2;
-  --bg2: #d5c4a1;
-  --bg3: #bdae93;
-  --bg4: #a89984;
+  --bg0: #fbfbfb;
+  --bg0_h: #f9f9f9;
+  --bg0_s: #f2f2f2;
+  --bg1: #dfdfdf;
+  --bg2: #c1c1c1;
+  --bg3: #bfbfbf;
+  --bg4: #a8a8a8;
   --fg: var(--fg1);
-  --fg0: #282828;
-  --fg1: #3c3836;
-  --fg2: #504945;
-  --fg3: #665c54;
-  --fg4: #7c6f64;
+  --fg0: #1b1b1b;
+  --fg1: #212121;
+  --fg2: #292929;
+  --fg3: #636363;
+  --fg4: #7a7a7a;
   --gray1: var(--fg4);
   --gray2: #928374;
   --red1: #cc241d;
@@ -45,19 +46,19 @@
 
 :root[data-theme="dark"] {
   --bg: var(--{{ $backgroundColor }});
-  --bg0: #282828;
-  --bg0_h: #1d2021;
-  --bg0_s: #32302f;
-  --bg1: #3c3836;
-  --bg2: #504945;
-  --bg3: #665c54;
-  --bg4: #7c6f64;
+  --bg0: #1a1a1a;
+  --bg0_h: #1d1d1d;
+  --bg0_s: #2f2f2f;
+  --bg1: #202020;
+  --bg2: #292929;
+  --bg3: #636363;
+  --bg4: #7a7a7a;
   --fg: var(--fg1);
-  --fg0: #fbf1c7;
-  --fg1: #ebdbb2;
-  --fg2: #d5c4a1;
-  --fg3: #bdae93;
-  --fg4: #a89984;
+  --fg0: #fbfbfb;
+  --fg1: #ebebeb;
+  --fg2: #d5d5d5;
+  --fg3: #bdbdbd;
+  --fg4: #a8a8a8;
   --gray1: var(--fg4);
   --gray2: #928374;
   --red1: #cc241d;

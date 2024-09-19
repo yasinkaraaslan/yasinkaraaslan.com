@@ -1,0 +1,53 @@
+.user {
+  display: flex;
+}
+
+.user__info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+.user__info-name {
+  font-weight: 500;
+}
+
+.user__info-image {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  & .avatar {
+    margin: 0;
+  }
+}
+
+.user__logout {
+  margin-left: 8px;
+  align-items: center;
+  display: flex;
+}
+
+.user__logout-button {
+  background: initial;
+  display: inline-flex;
+  border: 0;
+  margin: 0;
+  padding: 3px;
+  vertical-align: -1px;
+  cursor: pointer;
+  & svg {
+    width: 17px;
+    height: 17px;
+    fill: var(--fg2);
+  }
+  &:hover {
+    & svg {
+      fill: var(--fg4);
+    }
+  }
+}
+
+.hide {
+  display: none;
+}

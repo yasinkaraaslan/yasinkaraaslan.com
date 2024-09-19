@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Yasin Karaaslan",
+    "label": "",
+    "image": "/img/avatar.jpg",
+    "email": "yasin@yasinkaraaslan.com",
+    "location": {
+      "city": "İstanbul"
+    },
+    "profiles": [
+      {
+        "network": "X",
+        "url": "https://x.com/yasinkaraaslanx"
+      },
+      {
+        "network": "Github",
+        "url": "https://github.com/yasinkaraaslan"
+      }
+    ]
+  },
+  "languages": [
+    {
+      "language": "Turkish",
+      "fluency": "Anadil"
+    },
+    {
+      "language": "English",
+      "fluency": "B2"
+    }
+  ],
+  "meta": {
+    "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/resume.json",
+    "version": "v1.0.0",
+    "lastModified": "2017-12-24T15:53:00"
+  }
+}

@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+/>
 <html
   lang="{{ .Site.Language.Lang | default "en" }}"
   data-theme="{{ .Param "defaultTheme" | default "light" }}"
@@ -12,6 +16,7 @@
           {{ block "main" . }}{{ end }}
         </div>
         {{ partial "sidebar.html" . }}
+        {{ partial "language.html" . }}
       </main>
       {{ partial "footer.html" . }}
     </div>

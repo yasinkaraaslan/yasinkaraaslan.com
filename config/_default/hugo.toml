@@ -1,10 +1,12 @@
-baseURL = "http://localhost"
-copyright = "Copyright © 2021"
-title = "hugo-theme-gruvbox"
+baseURL = "https://yasinkaraaslan.com"
+title = "Yasin Karaaslan"
+copyright = '<a href="/tos" target="_blank">© 2023 - 2024 Yasin Karaaslan</a>'
 #paginate = 10
 enableRobotsTXT = true
+pluralizeListTitles = false
+
 # Enable to calculate the last modified date from Git history and show it in the post header
-#enableGitInfo = true
+enableGitInfo = true
 
 [build]
   noJSConfigInAssets = true
@@ -40,17 +42,15 @@ enableRobotsTXT = true
 [params]
   # dark or light, defaults to light. Local storage and OS preference override this param. For more details see: 
   # https://github.com/schnerring/hugo-theme-gruvbox/issues/34#issuecomment-1235870375
-  #defaultTheme = "light"
+  defaultTheme = "dark"
   # gray red green yellow blue purple aqua orange, defaults to blue
-  #themeColor = "blue"
+  themeColor = "aqua"
   # soft medium hard, defaults to medium
   #themeContrast = "medium"
-  author = "Michael Schnerring"
-  subtitle = "Theme Demo"
-  description = "A retro-looking Hugo theme inspired by gruvbox. The pastel colors are high contrast, easily distinguishable, pleasing to the eye, and feature light and dark color palettes."
+  author = "Yasin Karaaslan"
 
   [params.logo]
-    text = "gruvbox"
+    #text = "yasin"
     url = "/"
 
   [params.prism]
@@ -92,14 +92,6 @@ enableRobotsTXT = true
   # See  https://github.com/bradvin/social-share-urls for more format strings
   [[params.socialShare]]
     iconSuite = "simple-icon"
-    iconName = "facebook"
-    formatString = "https://www.facebook.com/sharer.php?u={url}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "reddit"
-    formatString = "https://reddit.com/submit?url={url}&title={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
     iconName = "x"
     formatString = "https://x.com/intent/post?url={url}&text={title}"
   [[params.socialShare]]
@@ -108,62 +100,66 @@ enableRobotsTXT = true
     formatString = "https://www.linkedin.com/sharing/share-offsite/?url={url}"
   [[params.socialShare]]
     iconSuite = "simple-icon"
-    iconName = "whatsapp"
-    formatString = "whatsapp://send/?text={title}%20{url}"
+    iconName = "facebook"
+    formatString = "https://www.facebook.com/sharer.php?u={url}"
   [[params.socialShare]]
     iconSuite = "simple-icon"
-    iconName = "tumblr"
-    formatString = "https://www.tumblr.com/widgets/share/tool?canonicalUrl={url}&title={title}&caption={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "pinterest"
-    formatString = "http://pinterest.com/pin/create/button/?url={url}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "ycombinator"
-    formatString = "https://news.ycombinator.com/submitlink?u={url}&t={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "vk"
-    formatString = "http://vk.com/share.php?url={url}&title={title}&comment={title}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "xing"
-    formatString = "https://www.xing.com/spi/shares/new?url={url}"
-  [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "telegram"
-    formatString = "https://telegram.me/share/url?url={url}&text={title}"
+    iconName = "reddit"
+    formatString = "https://reddit.com/submit?url={url}&title={title}"
   [[params.socialShare]]
     iconSuite = "tabler-icon"
     iconName = "outline/mail"
     formatString = "mailto:?subject={title}&body={url}"
 
-[menu]
-  [[menu.main]]
-    identifier = "blog"
-    name = "Blog"
-    url = "/blog"
-    weight = 10
-  [[menu.main]]
-    identifier = "cv"
-    name = "CV"
-    url = "/cv"
-    weight = 20
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about"
-    weight = 30
+  [params.signIn]
+    providers = [ 'x', 'google', 'github']
+  
 
 [languages]
   [languages.en]
+    contentDir = 'content/en/'
     languageName = "English"
+    languageCode = 'en-US'
     weight = 10
-    [languages.en.params.jsonResume]
-      present = "present"
-  [languages.de]
-    languageName = "Deutsch"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "posts"
+        name = "Blog"
+        url = "/posts"
+        weight = 10
+      [[languages.en.menu.main]]
+          identifier = "about"
+          name = "About"
+          url = "/about"
+          weight = 30
+    [languages.en.params]
+      mainSections = ['posts', 'short-stories']
+      [languages.en.params.jsonResume]
+        present = "present"
+
+
+  [languages.tr]
+    contentDir = 'content/tr/'
+    disabled = false
+    languageName = "Türkçe"
+    languageCode = 'tr-TR'
     weight = 20
-    [languages.de.params.jsonResume]
-      present = "heute"
+
+
+    [languages.tr.menu]
+      [[languages.tr.menu.main]]
+        identifier = "yazilar"
+        name = "Yazılar"
+        url = "/tr/yazilar"
+        weight = 10
+      [[languages.tr.menu.main]]
+          identifier = "hakkimda"
+          name = "Hakkımda"
+          url = "/tr/hakkimda"
+          weight = 30
+          
+    [languages.tr.params]
+      mainSections = ['yazilar', 'kisa-hikayeler']
+      [languages.tr.params.jsonResume]
+        present = "şu an"

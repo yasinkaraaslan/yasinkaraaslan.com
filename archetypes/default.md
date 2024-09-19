@@ -1,10 +1,9 @@
 ---
 title: "{{ humanize .Name | title }}"
 date: "{{ .Date }}"
-draft: true
+draft: false
 comments: false
-socialShare: true
+socialShare: false
 toc: false
-cover:
-  src: cover.png
+readingTime: false
 ---

@@ -194,7 +194,7 @@ nav#menu {
   }
 
   & ul.menu--vertical {
-    background: var(--fg0);
+    background: var(--bg1);
     bottom: 0;
     margin: 0;
     padding: 3rem;
@@ -207,10 +207,10 @@ nav#menu {
     z-index: 10;
 
     & .menu__item {
-      color: var(--bg1);
+      color: var(--fg1);
 
       &:hover {
-        color: var(--bg4);
+        color: var(--fg4);
       }
     }
   }
@@ -260,7 +260,7 @@ nav#menu {
         }
 
         & ~ svg {
-          stroke: var(--bg1);
+          stroke: var(--fg3);
 
           & line:nth-of-type(1) {
             transform: translate(0, 6px) rotate(45deg);
