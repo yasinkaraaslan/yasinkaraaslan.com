@@ -95,8 +95,8 @@ enableGitInfo = true
     iconName = "x"
     formatString = "https://x.com/intent/post?url={url}&text={title}"
   [[params.socialShare]]
-    iconSuite = "simple-icon"
-    iconName = "linkedin"
+    iconSuite = "tabler-icon"
+    iconName = "outline/brand-linkedin"
     formatString = "https://www.linkedin.com/sharing/share-offsite/?url={url}"
   [[params.socialShare]]
     iconSuite = "simple-icon"
