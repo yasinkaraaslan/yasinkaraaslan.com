@@ -1,6 +1,6 @@
 baseURL = "https://yasinkaraaslan.com"
 title = "Yasin Karaaslan"
-copyright = '<a href="/tos" target="_blank">© 2023 - 2024 Yasin Karaaslan</a>'
+copyright = '<a href="/tos" target="_blank">© 2023 - 2026 Yasin Karaaslan</a>'
 #paginate = 10
 enableRobotsTXT = true
 pluralizeListTitles = false
@@ -12,16 +12,16 @@ enableGitInfo = true
   noJSConfigInAssets = true
   [build.buildStats]
     # With each build, Hugo writes a hugo_stats.json file that contains arrays
-    # of the class attributes, id attributes, and tags of each HTML element 
-    # within the published site. For production builds, this file is required 
+    # of the class attributes, id attributes, and tags of each HTML element
+    # within the published site. For production builds, this file is required
     # by PurgeCSS to prune unused CSS.
     enable = true
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      # This setting allows inlining <script> and <style> tags in markdown, 
-      # which is useful and required to use Prism plugins, but may be dangerous 
+      # This setting allows inlining <script> and <style> tags in markdown,
+      # which is useful and required to use Prism plugins, but may be dangerous
       # if the content isn't trustworthy.
       unsafe = true
 
@@ -40,7 +40,7 @@ enableGitInfo = true
     notAlternative = true
 
 [params]
-  # dark or light, defaults to light. Local storage and OS preference override this param. For more details see: 
+  # dark or light, defaults to light. Local storage and OS preference override this param. For more details see:
   # https://github.com/schnerring/hugo-theme-gruvbox/issues/34#issuecomment-1235870375
   defaultTheme = "dark"
   # gray red green yellow blue purple aqua orange, defaults to blue
@@ -71,14 +71,14 @@ enableGitInfo = true
       "command-line",
       "diff-highlight"
     ]
-  
+
   # By default, the theme creates resized versions of images ranging from 300 to
   # 700 pixels wide in increments of 200 pixels
   #[params.imageResize]
   #  min = 300
   #  max = 700
   #  increment = 200
-  
+
   [params.tagCloud]
     enable = false
     minFontSizeRem = 0.8
@@ -113,13 +113,13 @@ enableGitInfo = true
 
   [params.signIn]
     providers = [ 'x', 'google', 'github']
-  
+
 
 [languages]
   [languages.en]
     contentDir = 'content/en/'
-    languageName = "English"
-    languageCode = 'en-US'
+    label = "English"
+    locale = 'en-US'
     weight = 10
 
     [languages.en.menu]
@@ -142,8 +142,8 @@ enableGitInfo = true
   [languages.tr]
     contentDir = 'content/tr/'
     disabled = false
-    languageName = "Türkçe"
-    languageCode = 'tr-TR'
+    label = "Türkçe"
+    locale = 'tr-TR'
     weight = 20
 
 
@@ -158,7 +158,7 @@ enableGitInfo = true
           name = "Hakkımda"
           url = "/tr/hakkimda"
           weight = 30
-          
+
     [languages.tr.params]
       mainSections = ['yazilar', 'kisa-hikayeler']
       [languages.tr.params.jsonResume]
