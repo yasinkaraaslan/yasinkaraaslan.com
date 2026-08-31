@@ -117,7 +117,7 @@ enableGitInfo = true
 
 [languages]
   [languages.en]
-    contentDir = 'content/en/'
+    contentDir = 'content/en'
     label = "English"
     locale = 'en-US'
     weight = 10
@@ -140,7 +140,7 @@ enableGitInfo = true
 
 
   [languages.tr]
-    contentDir = 'content/tr/'
+    contentDir = 'content/tr'
     disabled = false
     label = "Türkçe"
     locale = 'tr-TR'
