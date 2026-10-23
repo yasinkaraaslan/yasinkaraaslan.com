@@ -34,6 +34,36 @@
   {{ if eq $image.MediaType.SubType "svg" }}
     <!-- No processing for SVGs -->
     <img src="{{ $image.RelPermalink }}" alt="{{ .alt }}" />
+  {{ else if eq $image.MediaType.SubType "png" }}
+    {{/* Keep PNG encoding and offer enough resolution for high-density screens. */}}
+    {{ $minWidth := .page.Site.Params.imageResize.min | default 300 }}
+    {{ $maxWidth := .page.Site.Params.imageResize.max | default 1600 }}
+    {{ $increment := .page.Site.Params.imageResize.increment | default 200 }}
+    {{ $srcSet := slice }}
+    {{ range seq $minWidth $increment $maxWidth }}
+      {{ if lt . $image.Width }}
+        {{ $resized := $image.Resize (printf "%dx png" .) }}
+        {{ $srcSet = $srcSet | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
+      {{ end }}
+    {{ end }}
+    {{ $srcSet = $srcSet | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
+    {{/* Match the 800px content cap and main's 1.1em side margins.
+      Lazy images use their actual layout width where auto sizes is supported,
+      including images in figures and narrower containers. */}}
+    {{ $sizes := printf "min(calc(100vw - 2.2rem), 800px, %dpx)" $image.Width }}
+    {{ if .lazy }}
+      {{ $sizes = printf "auto, %s" $sizes }}
+    {{ end }}
+    <img
+      src="{{ $image.RelPermalink }}"
+      srcset="{{ delimit $srcSet ", " }}"
+      sizes="{{ $sizes }}"
+      alt="{{ .alt }}"
+      {{ with .caption }}title="{{ . | markdownify | plainify }}"{{ end }}
+      {{ if .lazy }}loading="lazy"{{ end }}
+      width="{{ $image.Width }}"
+      height="{{ $image.Height }}"
+    />
   {{ else }}
     <!-- Calculate resize widths in increments of 100px -->
     {{ $minWidth := .page.Site.Params.imageResize.min | default 300 }}
